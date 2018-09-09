@@ -6,16 +6,13 @@
 
 ##Struktur Data
 ```gradle
-dependencies {
-  {
-                  "Nama Barang",
-                  "tersedia",
-                  "jumlah barang",
-                  "lokasi icon",
-                  "lokasi img",
-                  "harga",
-                  "deskripsi"
-  }
-
+{
+  "Nama Barang",
+  "tersedia",
+  "jumlah barang",
+  "lokasi icon",
+  "lokasi img",
+  "harga",
+  "deskripsi"
 }
 ```
