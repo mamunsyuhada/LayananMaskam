@@ -4,9 +4,8 @@
   <img  src="https://github.com/mamunsyuhada/LayananMaskam/blob/master/image-doc/uiux-layanan-maskam.png">
 </p>
 
-##Struktur Data
+## Struktur Data
 
-<p>
 ```gradle
 {
   "Nama Barang",
@@ -18,4 +17,3 @@
   "deskripsi"
 }
 ```
-</p>
