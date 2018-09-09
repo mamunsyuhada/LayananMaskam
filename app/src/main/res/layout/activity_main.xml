@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:src="@drawable/logo_lebar"
+        style="@style/AppBar"
+        />
+    <LinearLayout
+        android:layout_margin="15dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            style="@style/btn"
+            android:id="@+id/btnGrid"
+            android:text="Grid View"
+            android:background="@drawable/btn_blue"
+            android:textColor="@color/whiteColor" />
+        <Button
+            style="@style/btn"
+            android:id="@+id/btnList"
+            android:text="ListView"
+            android:background="@drawable/btn_white"
+            android:textColor="@color/colorPrimary"/>
+    </LinearLayout>
+</LinearLayout>
