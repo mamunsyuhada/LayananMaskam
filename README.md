@@ -5,6 +5,8 @@
 </p>
 
 ##Struktur Data
+
+<p>
 ```gradle
 {
   "Nama Barang",
@@ -16,3 +18,4 @@
   "deskripsi"
 }
 ```
+</p>
