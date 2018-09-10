@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LayananMaskam</string>
+    <string name="nama_barang">Nama Barang</string>
+    <string name="tersedia">tersedia</string>
 </resources>
