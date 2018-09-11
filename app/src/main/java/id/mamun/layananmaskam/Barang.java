@@ -5,6 +5,9 @@ public class Barang {
     private String icon;
     private String tersedia;
     private String totalDefault;
+    private String deskripsi;
+    private String harga;
+    private String img;
 
     public void setNamaBarang(String namaBarang) {
         this.namaBarang = namaBarang;
@@ -32,5 +35,17 @@ public class Barang {
 
     public void setTotalDefault(String totalDefault) {
         this.totalDefault = totalDefault;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+    public void setHarga(String harga) {
+        this.harga = harga;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

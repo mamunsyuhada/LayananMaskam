@@ -61,14 +61,18 @@ public class DataBarang {
     };
 
     public static ArrayList<Barang> getListData(){
-        Barang barang = null;
+        Barang barang;
         ArrayList<Barang> list = new ArrayList<>();
         for (int i= 0; i < data.length; i++){
             barang = new Barang();
+
             barang.setNamaBarang(data[i][0]);
-            barang.setIcon(data[i][1]);
-            barang.setTersedia(data[i][2]);
-            barang.setTotalDefault(data[i][3]);
+            barang.setTersedia(data[i][1]);
+            barang.setTotalDefault(data[i][2]);
+            barang.setIcon(data[i][3]);
+            barang.setImg(data[i][4]);
+            barang.setHarga(data[i][5]);
+            barang.setDeskripsi(data[i][6]);
 
             list.add(barang);
         }
