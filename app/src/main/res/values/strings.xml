@@ -2,4 +2,7 @@
     <string name="app_name">LayananMaskam</string>
     <string name="nama_barang">Nama Barang</string>
     <string name="tersedia">tersedia</string>
+    <string name="aksi">Aksi</string>
+    <string name="harga">Rp. Harga</string>
+    <string name="barang">Barang adalah benda-benda yang berwujud, yang digunakan masyarakat untuk memenuhi kebutuhannya atau untuk menghasilkan benda lain yang akan memenuhi kebutuhan masyarakat.</string>
 </resources>
