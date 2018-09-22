@@ -11,7 +11,7 @@
         android:id="@+id/imgIcon"
         android:scaleType="centerCrop"
         android:layout_margin="10dp"
-        android:src="@drawable/default_barang_ico"
+        android:src="@drawable/ico_default_barang"
         android:layout_width="50dp"
         android:layout_height="50dp" />
     <LinearLayout

@@ -5,25 +5,22 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.GridViewHolder>{
 
     private Context context;
     private ArrayList<Barang> listBarang;
 
-    public ArrayList<Barang> getListBarang(){
+    private ArrayList<Barang> getListBarang(){
         return listBarang;
     }
 
@@ -31,7 +28,7 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
         this.listBarang = listBarang;
     }
 
-    public GridBarangAdapter(Context context){
+    GridBarangAdapter(Context context){
         this.context = context;
     }
 
@@ -47,31 +44,25 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
 
     @Override
     public void onBindViewHolder(@NonNull GridViewHolder holder, final int position) {
-        final String namaBarang = getListBarang().get(position).getNamaBarang();
-        holder.tvNamaBarang.setText(namaBarang);
-        final String totTersedia = getListBarang().get(position).getTersedia();
-        holder.tvAvailable.setText("tersedia : " + totTersedia);
+        final Barang mBarang = getListBarang().get(position);
+        holder.tvNamaBarang.setText(mBarang.getNamaBarang());
+        holder.tvAvailable.setText("tersedia : " + mBarang.getTersedia());
 
-        final String imgIcon = getListBarang().get(position).getIcon();
-        Glide.with(context)
-                .load(imgIcon)
-                .transition(withCrossFade())
-                .apply(new RequestOptions()
-                        .placeholder(R.drawable.default_barang_ico)
-                        .error(R.drawable.default_barang_ico).centerCrop())
-                .into(holder.imgIcon);
         holder.gridLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent pindahDeatail = new Intent(context, DetailActivity.class);
+                Toast.makeText(context, mBarang.getIcon(), Toast.LENGTH_SHORT).show();
+
+
+//                Intent pindahDeatail = new Intent(context, DetailActivity.class);
 
 //                pindahDeatail.putExtra("POSISI", position);
 ////                pindahDeatail.putExtra("TOTAL_TERSEDIA", totTersedia);
 ////                pindahDeatail.putExtra("IMG_ICON", imgIcon);
 ////                pindahDeatail.putExtra("NAMA_BARANG", imgIcon); TODO gambar
 
-                context.startActivity(pindahDeatail);
+//                context.startActivity(pindahDeatail);
 
             }
         });

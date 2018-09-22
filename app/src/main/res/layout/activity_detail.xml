@@ -15,7 +15,7 @@
             android:background="@drawable/btn_circle"
             android:scaleType="fitStart"
             android:layout_margin="10dp"
-            android:src="@drawable/left_arrow_ico"
+            android:src="@drawable/left_arrow_ic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -37,7 +37,7 @@
             <ImageView
                 android:id="@+id/imgBarang"
                 android:scaleType="centerCrop"
-                android:src="@drawable/hijab"
+                android:src="@drawable/img_default"
                 android:layout_width="wrap_content"
                 android:layout_height="240dp" />
             <ImageView
@@ -45,7 +45,7 @@
                 android:layout_marginTop="160dp"
                 android:background="@color/colorPrimary"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/hijab_ico"
+                android:src="@drawable/ico_hijab"
                 android:layout_width="150dp"
                 android:layout_height="150dp" />
             <LinearLayout

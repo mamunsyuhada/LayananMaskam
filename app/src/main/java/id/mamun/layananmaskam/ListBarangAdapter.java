@@ -22,7 +22,7 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
     private Context context;
     private ArrayList<Barang> listBarang;
 
-    public ArrayList<Barang> getListBarang(){
+    private ArrayList<Barang> getListBarang(){
         return listBarang;
     }
 
@@ -30,7 +30,7 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
         this.listBarang = listBarang;
     }
 
-    public ListBarangAdapter(Context context){
+    ListBarangAdapter(Context context){
         this.context = context;
     }
 
@@ -45,17 +45,17 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListBarangAdapter.ListViewHolder holder, int position) {
-        holder.tvNamaBarang.setText(getListBarang().get(position).getNamaBarang());
-        holder.tvAvailable.setText("tersedia : " + getListBarang().get(position).getTersedia());
-
+    public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
+        Barang mBarang = getListBarang().get(position);
+        holder.tvNamaBarang.setText(mBarang.getNamaBarang());
+        holder.tvAvailable.setText("tersedia : " + mBarang.getTersedia());
         Glide.with(context)
-                .load(getListBarang().get(position).getIcon())
+                .load(mBarang.getIcon())
                 .transition(withCrossFade())
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.default_barang_ico)
-                        .error(R.drawable.default_barang_ico).centerCrop())
+                        .error(R.drawable.ico_default_barang).centerCrop())
                 .into(holder.imgIcon);
+
     }
 
     @Override
