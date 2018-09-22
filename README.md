@@ -1,5 +1,5 @@
 # LayananMaskam
-Repositori ini merupakan progres online course di Dicoding Kotlin Android Developer Expert (KADE). Saya telah terdaftar di kelas terebut sebagai bagian dari Google Developers Kejar Batch 1 Indonesia.
+Repositori ini merupakan progres online course di Dicoding, Android Developer Bagi Pemula.
 ## Rancangan Mock Up
 <p align="center">
   <img  src="https://github.com/mamunsyuhada/LayananMaskam/blob/master/image-doc/uiux-layanan-maskam.png">
