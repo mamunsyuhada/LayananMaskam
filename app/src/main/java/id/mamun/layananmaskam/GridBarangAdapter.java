@@ -13,7 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.GridViewHolder>{
 
@@ -46,7 +53,19 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
     public void onBindViewHolder(@NonNull GridViewHolder holder, final int position) {
         final Barang mBarang = getListBarang().get(position);
         holder.tvNamaBarang.setText(mBarang.getNamaBarang());
-        holder.tvAvailable.setText("tersedia : " + mBarang.getTersedia());
+        holder.tvAvailable.setText("tersedia : " + mBarang.getTersedia() + " dari " + mBarang.getTotalDefault());
+//        Glide.with(context)
+//                .load(Integer.parseInt(mBarang.getIcon()))
+//                .transition(withCrossFade())
+//                .apply(new RequestOptions()
+//                        .error(R.drawable.ico_handycam).centerCrop())
+//                .into(holder.imgIcon);
+
+        Picasso.get()
+                .load("https://github.com/mamunsyuhada/LayananMaskam/blob/master/image-doc/icon-svg/"
+                        + mBarang.getIcon()
+                        + ".png")
+                .into(holder.imgIcon);
 
         holder.gridLay.setOnClickListener(new View.OnClickListener() {
             @Override
