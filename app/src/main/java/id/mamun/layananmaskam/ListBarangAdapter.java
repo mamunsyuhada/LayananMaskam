@@ -47,7 +47,7 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
     @Override
     public void onBindViewHolder(@NonNull ListBarangAdapter.ListViewHolder holder, int position) {
         holder.tvNamaBarang.setText(getListBarang().get(position).getNamaBarang());
-        holder.tvAvailable.setText(getListBarang().get(position).getTersedia());
+        holder.tvAvailable.setText("tersedia : " + getListBarang().get(position).getTersedia());
 
         Glide.with(context)
                 .load(getListBarang().get(position).getIcon())

@@ -1,6 +1,7 @@
 package id.mamun.layananmaskam;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -45,17 +46,36 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GridViewHolder holder, int position) {
-        holder.tvNamaBarang.setText(getListBarang().get(position).getNamaBarang());
-        holder.tvAvailable.setText(getListBarang().get(position).getTersedia());
+    public void onBindViewHolder(@NonNull GridViewHolder holder, final int position) {
+        final String namaBarang = getListBarang().get(position).getNamaBarang();
+        holder.tvNamaBarang.setText(namaBarang);
+        final String totTersedia = getListBarang().get(position).getTersedia();
+        holder.tvAvailable.setText("tersedia : " + totTersedia);
 
+        final String imgIcon = getListBarang().get(position).getIcon();
         Glide.with(context)
-                .load(getListBarang().get(position).getIcon())
+                .load(imgIcon)
                 .transition(withCrossFade())
                 .apply(new RequestOptions()
                         .placeholder(R.drawable.default_barang_ico)
                         .error(R.drawable.default_barang_ico).centerCrop())
                 .into(holder.imgIcon);
+        holder.gridLay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent pindahDeatail = new Intent(context, DetailActivity.class);
+
+//                pindahDeatail.putExtra("POSISI", position);
+////                pindahDeatail.putExtra("TOTAL_TERSEDIA", totTersedia);
+////                pindahDeatail.putExtra("IMG_ICON", imgIcon);
+////                pindahDeatail.putExtra("NAMA_BARANG", imgIcon); TODO gambar
+
+                context.startActivity(pindahDeatail);
+
+            }
+        });
+
     }
 
     @Override

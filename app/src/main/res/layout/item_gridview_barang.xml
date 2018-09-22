@@ -29,6 +29,7 @@
             android:src="@drawable/default_barang_ico"
             style="@style/layoutdasar" />
         <TextView
+            android:layout_margin="10dp"
             android:id="@+id/tvAvaliable"
             android:textColor="@color/whiteColor"
             android:text="@string/tersedia"

@@ -1,5 +1,6 @@
 package id.mamun.layananmaskam;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -36,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnListView(View view) {
-        btnList.setBackgroundColor(R.drawable.btn_blue);
+        btnList.setBackgroundResource(R.drawable.btn_blue);
         btnList.setTextColor(getResources().getColor(R.color.whiteColor));
-        btnGrid.setBackgroundColor(R.drawable.btn_white);
-        btnGrid.setTextColor(getResources().getColor(R.color.colorPrimary));
 
+        btnGrid.setBackgroundResource(R.drawable.btn_white);
+        btnGrid.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         tampilkanRecyclerList();
     }
 
@@ -53,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnGridView(View view) {
-        btnGrid.setBackgroundColor(R.drawable.btn_blue);
+        btnGrid.setBackgroundResource(R.drawable.btn_blue);
         btnGrid.setTextColor(getResources().getColor(R.color.whiteColor));
-        btnList.setBackgroundColor(R.drawable.btn_white);
-        btnList.setTextColor(getResources().getColor(R.color.colorPrimary));
+        btnList.setBackgroundResource(R.drawable.btn_white);
+        btnList.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
         tampilkanRecyclerGrid();
     }

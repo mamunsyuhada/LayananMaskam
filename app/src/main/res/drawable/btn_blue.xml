@@ -5,9 +5,9 @@
             android:shape="rectangle">
             <stroke
                 android:width="2dp"
-                android:color="@color/colorPrimary"/>
+                android:color="@color/colorPrimaryDark"/>
             <solid
-                android:color="@color/colorPrimary"/>
+                android:color="@color/colorPrimaryDark"/>
         </shape>
     </item>
 </selector>

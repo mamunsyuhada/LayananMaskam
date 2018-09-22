@@ -30,7 +30,8 @@
             android:textColor="@color/colorPrimary"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
-        style="@style/layoutdasar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/rvItem">
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>
