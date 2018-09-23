@@ -45,8 +45,7 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
     @Override
     public GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View gridView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_gridview_barang, parent, false);
-        GridViewHolder gridViewHolder = new GridViewHolder(gridView);
-        return gridViewHolder;
+        return new GridViewHolder(gridView);
     }
 
     @Override
@@ -63,11 +62,11 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
 //                .into(holder.imgIcon);
 
         Picasso.get()
-                .load("https://github.com/mamunsyuhada/LayananMaskam/blob/master/image-doc/icon-svg/"
+                .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/icon-svg/"
                         + mBarang.getIcon()
                         + ".png")
                 .placeholder(R.drawable.anim_progress)
-                .error(R.drawable.ico_hijab)
+                .error(R.drawable.ico_default_barang)
                 .into(holder.imgIcon);
 
         holder.gridLay.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +74,6 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
             public void onClick(View v) {
 
 //                Toast.makeText(context, "anda memilih " + mBarang.getNamaBarang(), Toast.LENGTH_SHORT).show();
-
 
                 Intent pindahDeatail = new Intent(context, DetailActivity.class);
                 pindahDeatail.putExtra("POSISI", position);

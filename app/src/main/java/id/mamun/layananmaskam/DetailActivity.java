@@ -1,17 +1,14 @@
 package id.mamun.layananmaskam;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -19,19 +16,17 @@ import java.util.Locale;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private String namaBarang;
-    private String imgIcon;
-    private String totTersedia;
-    private String hargaBarang;
-    private String totDefault;
-    private String deskripsiBarang;
-
     private ArrayList<Barang> listBarang;
     private TextView tvNamaBarang;
     private ImageView imgBarang;
     private TextView tvHarga;
     private TextView tvTersedia;
     private TextView tvDeskripsi;
+    private ImageView imgIcon;
+
+    public DetailActivity(ArrayList<Barang> listBarang) {
+        this.listBarang = listBarang;
+    }
 
     public ArrayList<Barang> getListBarang(){
         return listBarang;
@@ -45,20 +40,35 @@ public class DetailActivity extends AppCompatActivity {
         initKomponen();
 
 //        int posisi = getIntent().getIntExtra("POSISI",0);
-//        Barang b = getListBarang().get(posisi);
-//        namaBarang = b.getNamaBarang();
-//        totTersedia = b.getTersedia();
-//        imgIcon = b.getIcon();
-//
-//        Log.d("data Put Extra", Integer.toString(posisi)
-//                + "{" +namaBarang + " & "
-//                + totTersedia + " & "
-//                + imgIcon + "}");
+
+//        tvNamaBarang.setText(mBarang.getNamaBarang());
+//        Picasso.get()
+//                .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/gamabar-barang/"
+//                        + mBarang.getImg()
+//                        + ".png")
+//                .placeholder(R.drawable.anim_progress)
+//                .error(R.drawable.img_default)
+//                .into(imgBarang);
+//        Picasso.get()
+//                .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/icon-svg/"
+//                        + mBarang.getImg()
+//                        + ".png")
+//                .placeholder(R.drawable.anim_progress)
+//                .error(R.drawable.img_default)
+//                .into(imgIcon);
+////        int hargaBarang = Integer.parseInt(mBarang.getHarga());
+////        Locale localeID = new Locale("in", "ID");
+////        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+////        tvHarga.setText(formatRupiah.format((double)hargaBarang));
+//        tvTersedia.setText("tersedia " + mBarang.getTersedia() + " dari " + mBarang.getTotalDefault());
+//        tvDeskripsi.setText(mBarang.getDeskripsi());
+
     }
 
     private void initKomponen() {
         tvNamaBarang = findViewById(R.id.tvNamaBarang);
         imgBarang = findViewById(R.id.imgBarang);
+        imgIcon = findViewById(R.id.imgIcon);
         tvHarga = findViewById(R.id.tvHarga);
         tvTersedia = findViewById(R.id.tvTersedia);
         tvDeskripsi = findViewById(R.id.tvDeskripsi);

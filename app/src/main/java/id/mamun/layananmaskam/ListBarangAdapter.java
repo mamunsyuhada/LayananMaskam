@@ -57,7 +57,7 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
 //                .into(holder.imgIcon);
 
         Picasso.get()
-                .load("https://github.com/mamunsyuhada/LayananMaskam/blob/master/image-doc/icon-svg/"
+                .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/icon-svg/"
                         + mBarang.getIcon()
                         + ".png")
                 .placeholder(R.drawable.anim_progress)
@@ -68,7 +68,6 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
             @Override
             public void onClick(View v) {
 //                Toast.makeText(context, "anda memilih " +  mBarang.getNamaBarang(), Toast.LENGTH_SHORT).show();
-
                 Intent pindahDeatail = new Intent(context, DetailActivity.class);
                 pindahDeatail.putExtra("POSISI", position);
                 context.startActivity(pindahDeatail);
