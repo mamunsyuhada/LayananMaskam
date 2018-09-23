@@ -7,45 +7,61 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class DetailActivity extends AppCompatActivity {
 
     private String namaBarang;
     private String imgIcon;
     private String totTersedia;
-    private int posisi;
-
+    private String hargaBarang;
+    private String totDefault;
+    private String deskripsiBarang;
 
     private ArrayList<Barang> listBarang;
+    private TextView tvNamaBarang;
+    private ImageView imgBarang;
+    private TextView tvHarga;
+    private TextView tvTersedia;
+    private TextView tvDeskripsi;
 
     public ArrayList<Barang> getListBarang(){
         return listBarang;
     }
-
-    public void setListBarang(ArrayList<Barang> listBarang){
-        this.listBarang = listBarang;
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        initKomponen();
 
-        posisi = getIntent().getIntExtra("POSISI",0);
+//        int posisi = getIntent().getIntExtra("POSISI",0);
+//        Barang b = getListBarang().get(posisi);
+//        namaBarang = b.getNamaBarang();
+//        totTersedia = b.getTersedia();
+//        imgIcon = b.getIcon();
+//
+//        Log.d("data Put Extra", Integer.toString(posisi)
+//                + "{" +namaBarang + " & "
+//                + totTersedia + " & "
+//                + imgIcon + "}");
+    }
 
-        namaBarang = getListBarang().get(posisi).getNamaBarang();
-        totTersedia = getListBarang().get(posisi).getTersedia();
-        imgIcon = getListBarang().get(posisi).getIcon();
-        Log.d("data Put Extra", Integer.toString(posisi)
-                + "{" +namaBarang + " & "
-                + totTersedia + " & "
-                + imgIcon + "}");
-
+    private void initKomponen() {
+        tvNamaBarang = findViewById(R.id.tvNamaBarang);
+        imgBarang = findViewById(R.id.imgBarang);
+        tvHarga = findViewById(R.id.tvHarga);
+        tvTersedia = findViewById(R.id.tvTersedia);
+        tvDeskripsi = findViewById(R.id.tvDeskripsi);
     }
 
     public void aksiPesan(View view) {

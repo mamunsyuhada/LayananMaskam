@@ -7,8 +7,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnList;
     private RecyclerView rvBarang;
     private ArrayList<Barang>list;
+    private ArrayList<Barang> listBarang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
         list.addAll(DataBarang.getListData());
+
 
         //nampilin Grid dulu
         tampilkanRecyclerGrid();
@@ -66,5 +72,9 @@ public class MainActivity extends AppCompatActivity {
         GridBarangAdapter gridBarangAdapter = new GridBarangAdapter(this);
         gridBarangAdapter.setListBarang(list);
         rvBarang.setAdapter(gridBarangAdapter);
+    }
+
+    private ArrayList<Barang> getListBarang(){
+        return listBarang;
     }
 }

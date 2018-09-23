@@ -52,7 +52,7 @@ public class DataBarang {
             {
                 "Karpet",
                 "2",
-                "4",
+                "9",
                 "ico_carpet",
                 "@drawable/img_carpet.png",
                 "5000",

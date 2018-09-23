@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <ImageView
-        android:src="@drawable/logo_lebar"
-        style="@style/AppBar"
-        />
     <LinearLayout
-        style="@style/layoutdasar"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-        <Button
-            style="@style/btn"
-            android:onClick="btnGridView"
-            android:id="@+id/btnGrid"
-            android:text="Grid View"
-            android:background="@drawable/btn_blue"
-            android:textColor="@color/whiteColor" />
-        <Button
-            android:onClick="btnListView"
-            style="@style/btn"
-            android:id="@+id/btnList"
-            android:text="ListView"
-            android:background="@drawable/btn_white"
-            android:textColor="@color/colorPrimary"/>
-    </LinearLayout>
-    <android.support.v7.widget.RecyclerView
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rvItem">
-    </android.support.v7.widget.RecyclerView>
-</LinearLayout>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/logo_lebar"
+            style="@style/AppBar" />
+        <LinearLayout
+            style="@style/layoutdasar"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <Button
+                style="@style/btn"
+                android:onClick="btnGridView"
+                android:id="@+id/btnGrid"
+                android:text="Grid View"
+                android:background="@drawable/btn_blue"
+                android:textColor="@color/whiteColor" />
+            <Button
+                android:onClick="btnListView"
+                style="@style/btn"
+                android:id="@+id/btnList"
+                android:text="ListView"
+                android:background="@drawable/btn_white"
+                android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvItem">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</ScrollView>

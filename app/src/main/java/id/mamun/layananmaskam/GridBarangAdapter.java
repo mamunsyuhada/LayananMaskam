@@ -54,6 +54,7 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
         final Barang mBarang = getListBarang().get(position);
         holder.tvNamaBarang.setText(mBarang.getNamaBarang());
         holder.tvAvailable.setText("tersedia : " + mBarang.getTersedia() + " dari " + mBarang.getTotalDefault());
+
 //        Glide.with(context)
 //                .load(Integer.parseInt(mBarang.getIcon()))
 //                .transition(withCrossFade())
@@ -65,23 +66,20 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
                 .load("https://github.com/mamunsyuhada/LayananMaskam/blob/master/image-doc/icon-svg/"
                         + mBarang.getIcon()
                         + ".png")
+                .placeholder(R.drawable.anim_progress)
+                .error(R.drawable.ico_hijab)
                 .into(holder.imgIcon);
 
         holder.gridLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context, mBarang.getIcon(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "anda memilih " + mBarang.getNamaBarang(), Toast.LENGTH_SHORT).show();
 
 
-//                Intent pindahDeatail = new Intent(context, DetailActivity.class);
-
-//                pindahDeatail.putExtra("POSISI", position);
-////                pindahDeatail.putExtra("TOTAL_TERSEDIA", totTersedia);
-////                pindahDeatail.putExtra("IMG_ICON", imgIcon);
-////                pindahDeatail.putExtra("NAMA_BARANG", imgIcon); TODO gambar
-
-//                context.startActivity(pindahDeatail);
+                Intent pindahDeatail = new Intent(context, DetailActivity.class);
+                pindahDeatail.putExtra("POSISI", position);
+                context.startActivity(pindahDeatail);
 
             }
         });
