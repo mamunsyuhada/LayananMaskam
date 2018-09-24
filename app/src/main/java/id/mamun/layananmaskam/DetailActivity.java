@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView tvTersedia;
     private TextView tvDeskripsi;
     private ImageView imgIcon;
+    private Button btnAksiPesan;
 
 
     @Override
@@ -32,8 +34,10 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         initKomponen();
+        String namaBarang = getIntent().getStringExtra("DESKRIPSIBARANG");
 
-        tvNamaBarang.setText(getIntent().getStringExtra("NAMABARANG"));
+        tvNamaBarang.setText(namaBarang);
+
         Glide.with(this)
                 .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/gamabar-barang/"
                         + getIntent().getStringExtra("IMAGEBARANG")
@@ -63,7 +67,9 @@ public class DetailActivity extends AppCompatActivity {
                 + " dari "
                 + getIntent().getStringExtra("TOTALDEFAULT"));
 
-        tvDeskripsi.setText(getIntent().getStringExtra("DESKRIPSIBARANG"));
+        tvDeskripsi.setText(namaBarang);
+
+        btnAksiPesan.setText("Pinjam " + namaBarang);
     }
 
     private void initKomponen() {
@@ -73,11 +79,15 @@ public class DetailActivity extends AppCompatActivity {
         tvHarga = findViewById(R.id.tvHarga);
         tvTersedia = findViewById(R.id.tvTersedia);
         tvDeskripsi = findViewById(R.id.tvDeskripsi);
+        btnAksiPesan = findViewById(R.id.btnAksiPesan);
     }
 
     public void aksiPesan(View view) {
         try{
-            String text = "pinjam barang"; //TODO sesuai dengan barangnya
+            String text = "Assalaamu'alaikum, pak Udin... Saya bermaksut untuk meminjam *"
+                    + getIntent().getStringExtra("NAMABARANG")
+                    + "* dari Layanan Masjid Kampus UGM, pak."
+                    + " Bagaimana caranya ? Trimaksih..";
             String toNumber = "6285723910307";
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + toNumber + "&text=" + text));
