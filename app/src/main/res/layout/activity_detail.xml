@@ -12,6 +12,7 @@
         style="@style/AppBar"
         android:orientation="horizontal">
         <ImageButton
+            android:onClick="closeDetailActivity"
             android:background="@drawable/btn_circle"
             android:scaleType="fitStart"
             android:layout_margin="10dp"

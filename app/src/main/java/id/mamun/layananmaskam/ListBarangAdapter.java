@@ -40,15 +40,23 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
     @Override
     public ListBarangAdapter.ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View listView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_listview_barang, parent, false);
-        ListViewHolder listViewHolder = new ListViewHolder(listView);
-        return listViewHolder;
+        return new ListViewHolder(listView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, final int position) {
         final Barang mBarang = getListBarang().get(position);
+
+        final String namaBarang = mBarang.getNamaBarang();
+        final String totalSekarang = mBarang.getTersedia();
+        final String totalDefault = mBarang.getTotalDefault();
+        final String iconBarang = mBarang.getIcon();
+        final String hargaBarang = mBarang.getHarga();
+        final String imageBarang = mBarang.getImg();
+        final String deskripsiBarang = mBarang.getDeskripsi();
+
         holder.tvNamaBarang.setText(mBarang.getNamaBarang());
-        holder.tvAvailable.setText("tersedia : " + mBarang.getTersedia() + " dari " + mBarang.getTotalDefault());
+        holder.tvAvailable.setText("tersedia : " + totalSekarang + " dari " + totalDefault);
 //        Glide.with(context)
 //                .load(Integer.parseInt(mBarang.getIcon()))
 //                .transition(withCrossFade())
@@ -58,7 +66,7 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
 
         Picasso.get()
                 .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/icon-svg/"
-                        + mBarang.getIcon()
+                        + iconBarang
                         + ".png")
                 .placeholder(R.drawable.anim_progress)
                 .error(R.drawable.ico_default_barang)
@@ -69,7 +77,13 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.Li
             public void onClick(View v) {
 //                Toast.makeText(context, "anda memilih " +  mBarang.getNamaBarang(), Toast.LENGTH_SHORT).show();
                 Intent pindahDeatail = new Intent(context, DetailActivity.class);
-                pindahDeatail.putExtra("POSISI", position);
+                pindahDeatail.putExtra("NAMABARANG", namaBarang);
+                pindahDeatail.putExtra("TOTALSEKARANG", totalSekarang);
+                pindahDeatail.putExtra("TOTALDEFAULT", totalDefault);
+                pindahDeatail.putExtra("ICONBARANG", iconBarang);
+                pindahDeatail.putExtra("HARGA", hargaBarang);
+                pindahDeatail.putExtra("IMAGEBARANG", imageBarang);
+                pindahDeatail.putExtra("DESKRIPSIBARANG", deskripsiBarang);
                 context.startActivity(pindahDeatail);
             }
         });

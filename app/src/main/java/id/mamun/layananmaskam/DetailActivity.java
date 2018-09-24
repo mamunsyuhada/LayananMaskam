@@ -2,21 +2,22 @@ package id.mamun.layananmaskam;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Locale;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private ArrayList<Barang> listBarang;
     private TextView tvNamaBarang;
     private ImageView imgBarang;
     private TextView tvHarga;
@@ -24,13 +25,6 @@ public class DetailActivity extends AppCompatActivity {
     private TextView tvDeskripsi;
     private ImageView imgIcon;
 
-    public DetailActivity(ArrayList<Barang> listBarang) {
-        this.listBarang = listBarang;
-    }
-
-    public ArrayList<Barang> getListBarang(){
-        return listBarang;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,30 +33,37 @@ public class DetailActivity extends AppCompatActivity {
 
         initKomponen();
 
-//        int posisi = getIntent().getIntExtra("POSISI",0);
+        tvNamaBarang.setText(getIntent().getStringExtra("NAMABARANG"));
+        Glide.with(this)
+                .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/gamabar-barang/"
+                        + getIntent().getStringExtra("IMAGEBARANG")
+                        + ".png")
+                .transition(withCrossFade())
+                .apply(new RequestOptions()
+                        .error(R.drawable.img_default).centerCrop())
+                .into(imgBarang);
 
-//        tvNamaBarang.setText(mBarang.getNamaBarang());
-//        Picasso.get()
-//                .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/gamabar-barang/"
-//                        + mBarang.getImg()
-//                        + ".png")
-//                .placeholder(R.drawable.anim_progress)
-//                .error(R.drawable.img_default)
-//                .into(imgBarang);
-//        Picasso.get()
-//                .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/icon-svg/"
-//                        + mBarang.getImg()
-//                        + ".png")
-//                .placeholder(R.drawable.anim_progress)
-//                .error(R.drawable.img_default)
-//                .into(imgIcon);
-////        int hargaBarang = Integer.parseInt(mBarang.getHarga());
-////        Locale localeID = new Locale("in", "ID");
-////        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-////        tvHarga.setText(formatRupiah.format((double)hargaBarang));
-//        tvTersedia.setText("tersedia " + mBarang.getTersedia() + " dari " + mBarang.getTotalDefault());
-//        tvDeskripsi.setText(mBarang.getDeskripsi());
+        Glide.with(this)
+                .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/icon-svg/"
+                        + getIntent().getStringExtra("ICONBARANG")
+                        + ".png")
+                .transition(withCrossFade())
+                .apply(new RequestOptions()
+                        .error(R.drawable.ico_default_barang).centerCrop())
+                .into(imgIcon);
 
+        Locale localeID = new Locale("in", "ID");
+
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        int hargaInt = Integer.parseInt(getIntent().getStringExtra("HARGA"));
+        tvHarga.setText(formatRupiah.format(hargaInt));
+        tvTersedia.setText(
+                "tersedia "
+                + getIntent().getStringExtra("TOTALSEKARANG")
+                + " dari "
+                + getIntent().getStringExtra("TOTALDEFAULT"));
+
+        tvDeskripsi.setText(getIntent().getStringExtra("DESKRIPSIBARANG"));
     }
 
     private void initKomponen() {
@@ -86,5 +87,9 @@ public class DetailActivity extends AppCompatActivity {
 //            Toast.makeText(DetailActivity.this, "Download aplikasi Whatsapp dulu", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    public void closeDetailActivity(View view) {
+        finish();
     }
 }

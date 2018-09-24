@@ -5,22 +5,15 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.GridViewHolder>{
 
@@ -51,8 +44,17 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
     @Override
     public void onBindViewHolder(@NonNull GridViewHolder holder, final int position) {
         final Barang mBarang = getListBarang().get(position);
-        holder.tvNamaBarang.setText(mBarang.getNamaBarang());
-        holder.tvAvailable.setText("tersedia : " + mBarang.getTersedia() + " dari " + mBarang.getTotalDefault());
+
+        final String namaBarang = mBarang.getNamaBarang();
+        final String totalSekarang = mBarang.getTersedia();
+        final String totalDefault = mBarang.getTotalDefault();
+        final String iconBarang = mBarang.getIcon();
+        final String hargaBarang = mBarang.getHarga();
+        final String imageBarang = mBarang.getImg();
+        final String deskripsiBarang = mBarang.getDeskripsi();
+
+        holder.tvNamaBarang.setText(namaBarang);
+        holder.tvAvailable.setText("tersedia : " + totalSekarang + " dari " + totalDefault);
 
 //        Glide.with(context)
 //                .load(Integer.parseInt(mBarang.getIcon()))
@@ -63,20 +65,27 @@ public class GridBarangAdapter extends RecyclerView.Adapter<GridBarangAdapter.Gr
 
         Picasso.get()
                 .load("https://raw.githubusercontent.com/mamunsyuhada/LayananMaskam/master/image-doc/icon-svg/"
-                        + mBarang.getIcon()
+                        + iconBarang
                         + ".png")
                 .placeholder(R.drawable.anim_progress)
                 .error(R.drawable.ico_default_barang)
                 .into(holder.imgIcon);
 
         holder.gridLay.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
 //                Toast.makeText(context, "anda memilih " + mBarang.getNamaBarang(), Toast.LENGTH_SHORT).show();
 
                 Intent pindahDeatail = new Intent(context, DetailActivity.class);
-                pindahDeatail.putExtra("POSISI", position);
+                pindahDeatail.putExtra("NAMABARANG", namaBarang);
+                pindahDeatail.putExtra("TOTALSEKARANG", totalSekarang);
+                pindahDeatail.putExtra("TOTALDEFAULT", totalDefault);
+                pindahDeatail.putExtra("ICONBARANG", iconBarang);
+                pindahDeatail.putExtra("HARGA", hargaBarang);
+                pindahDeatail.putExtra("IMAGEBARANG", imageBarang);
+                pindahDeatail.putExtra("DESKRIPSIBARANG", deskripsiBarang);
                 context.startActivity(pindahDeatail);
 
             }
